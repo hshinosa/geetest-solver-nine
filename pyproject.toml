@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geetest-solver-nine"
+version = "0.1.0"
+description = "Self-hosted Geetest v4 nine-grid (icon) captcha solver — ONNX SigLIP + browser-token bypass"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "hshino" }]
+dependencies = [
+    "curl_cffi>=0.6",
+    "onnxruntime>=1.16",
+    "numpy>=1.24",
+    "Pillow>=10.0",
+    "pycryptodome>=3.19",
+    "playwright>=1.40",  # for BrowserVT
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+geetest_nine = ["models/*.onnx", "models/*.json"]
